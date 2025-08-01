@@ -1,14 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ReTriki - Juego</title>
-  <link rel="stylesheet" href="retriki.component.css" />
-</head>
-<body>
-  <div id="game-wrapper">
+<div id="game-wrapper">
   <div class="header-box">
     <h1 class="title">RETRIKI</h1>
     <p class="subtitle">Juega Triki</p>
@@ -17,21 +7,28 @@
   <div class="players-status">
     <div class="player">
       <span class="symbol">✖</span>
-      <p class="player-name">Jugador/Jugador1</p>
+      <p class="player-name">
+        {{ modo === "jugador" ? "Jugador" : "Jugador 1" }}
+      </p>
     </div>
     <div class="vs-text">VS</div>
     <div class="player">
       <span class="symbol">◯</span>
-      <p class="player-name">IA/Jugador2</p>
+      <p class="player-name">
+        {{ modo === "jugador" ? "IA" : "Jugador 2" }}
+      </p>
     </div>
   </div>
 
   <!-- Mensaje del turno -->
-  <p class="turn-message">{{ message }}</p>
+  <p class="turn-message">
+    {{ isIAThinking ? "IA está pensando..." : message }}
+  </p>
 
   <div class="board">
     <div
       class="cell"
+      [class.winner]="winningCells.includes(i)"
       *ngFor="let cell of board; let i = index"
       (click)="handleClick(i)"
     >
@@ -39,9 +36,19 @@
     </div>
   </div>
 
-  <div class="reset-btn">
-    <button (click)="resetGame()">Reiniciar</button>
+  <div class="buttons-container">
+    <div class="home-btn">
+      <button (click)="goToHome()">
+        <span class="icon">←</span>
+        Inicio
+      </button>
+    </div>
+
+    <div class="reset-btn">
+      <button (click)="resetGame()">
+        <span class="icon">↻</span>
+        Reiniciar
+      </button>
+    </div>
   </div>
 </div>
-</body>
-</html>

@@ -74,10 +74,14 @@ body {
 
 .symbol {
   font-size: 36px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .player-name {
   font-size: 0.9rem;
+  color: white;
 }
 
 .vs-text {
@@ -104,6 +108,9 @@ body {
   align-items: center;
   cursor: pointer;
   transition: 0.3s;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .cell:hover {
@@ -111,9 +118,41 @@ body {
   transform: scale(1.02);
 }
 
+.cell.winner {
+  background-color: rgba(124, 66, 255, 0.3);
+  border: 3px solid #7c42ff;
+  animation: winnerGlow 1s ease-in-out infinite alternate;
+  transform: scale(1.05);
+}
+
+@keyframes winnerGlow {
+  from {
+    box-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff;
+    background-color: rgba(124, 66, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px #7c42ff, 0 0 25px #7c42ff, 0 0 35px #7c42ff;
+    background-color: rgba(124, 66, 255, 0.5);
+  }
+}
+
 .reset-btn {
   width: 100%;
   max-width: 300px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.reset-btn,
+.home-btn {
+  flex: 1;
+  width: auto;
+  margin-top: 0;
 }
 
 .reset-btn button {
@@ -128,12 +167,51 @@ body {
   cursor: pointer;
   transition: 0.3s;
   box-shadow: 0 4px 8px rgba(124, 66, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .reset-btn button:hover {
   background-color: #6a35e0;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(124, 66, 255, 0.4);
+}
+
+.home-btn button {
+  width: 100%;
+  background-color: #2a2a4a;
+  color: white;
+  padding: 12px;
+  border: 2px solid #7c42ff;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.home-btn button:hover {
+  background-color: #7c42ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(124, 66, 255, 0.4);
+}
+
+.home-btn button .icon,
+.reset-btn button .icon {
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+
+.home-btn button:hover .icon,
+.reset-btn button:hover .icon {
+  transform: scale(1.1);
 }
 
 @keyframes neonGlow {
@@ -156,10 +234,21 @@ body {
     width: 90px;
     height: 90px;
     font-size: 32px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+
+  .cell.winner {
+    transform: scale(1.03);
+    animation: winnerGlow 1s ease-in-out infinite alternate;
   }
 
   .symbol {
     font-size: 28px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
   }
 
   .vs-text {
@@ -170,9 +259,20 @@ body {
     font-size: 0.75rem;
   }
 
-  .reset-btn button {
+  .buttons-container {
+    gap: 10px;
+  }
+
+  .reset-btn button,
+  .home-btn button {
     font-size: 14px;
     padding: 10px;
+    gap: 4px;
+  }
+
+  .home-btn button .icon,
+  .reset-btn button .icon {
+    font-size: 14px;
   }
 }
 
