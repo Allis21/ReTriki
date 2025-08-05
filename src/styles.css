@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d2b;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0d0d2b;
+}

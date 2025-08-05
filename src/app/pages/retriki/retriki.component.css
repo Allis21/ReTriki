@@ -15,114 +15,156 @@ body {
   align-items: center;
 }
 
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-color: #0d0d2b;
+  overflow: hidden;
+}
+
 #game-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(20px, 4vw, 60px);
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: clamp(20px, 3vh, 40px);
+  background-color: #0d0d2b;
+  min-height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.game-left-panel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  width: 100%;
+  gap: clamp(20px, 3vh, 30px);
+  flex: 1;
   max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #0d0d2b;
+}
+
+.game-right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  max-width: 500px;
 }
 
 .header-box {
   text-align: center;
   width: 100%;
-  padding: 20px 0 15px 0;
-  background-color: #070726;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  border-radius: 15px;
+  padding: clamp(15px, 2.5vh, 20px) 0 clamp(10px, 1.5vh, 15px) 0;
+  background: linear-gradient(135deg, #070726, #0a0a35);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 40px rgba(124, 66, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(124, 66, 255, 0.2);
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: bold;
   color: #ffffff;
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff, 0 0 30px #7c42ff;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px #7c42ff, 0 0 40px #7c42ff, 0 0 60px #7c42ff;
   animation: neonGlow 2s infinite alternate;
+  margin-bottom: 8px;
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   color: #cccccc;
-  margin-top: 8px;
-  text-shadow: 0 0 5px #7c42ff;
+  margin-top: 0;
+  text-shadow: 0 0 8px #7c42ff;
 }
 
 .players-status {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #070726;
-  padding: 10px;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #070726, #0a0a35);
+  padding: clamp(15px, 2.5vh, 20px);
+  border-radius: 18px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 30px rgba(124, 66, 255, 0.08);
+  border: 1px solid rgba(124, 66, 255, 0.15);
 }
 
 .player {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  font-size: 0.85rem;
+  gap: 6px;
+  font-size: 1rem;
 }
 
 .symbol {
-  font-size: 36px;
+  font-size: clamp(32px, 6vw, 42px);
   color: white;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 24px rgba(124, 66, 255, 0.4);
 }
 
 .player-name {
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
   color: white;
+  font-weight: 500;
+  margin-top: 6px;
 }
 
 .vs-text {
-  font-size: 18px;
+  font-size: clamp(18px, 3.5vw, 22px);
   font-weight: bold;
-  color: #ffffffaa;
+  color: #7c42ff;
+  text-shadow: 0 0 10px #7c42ff;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 120px);
-  grid-template-rows: repeat(3, 120px);
-  gap: 10px;
+  grid-template-columns: repeat(3, clamp(100px, 12vw, 140px));
+  grid-template-rows: repeat(3, clamp(100px, 12vw, 140px));
+  gap: clamp(10px, 2vw, 16px);
+  padding: clamp(15px, 2.5vh, 25px);
+  background: rgba(7, 7, 38, 0.3);
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .cell {
-  width: 120px;
-  height: 120px;
-  font-size: 40px;
-  border-radius: 12px;
-  border: 2px solid #7c42ff;
+  width: clamp(100px, 12vw, 140px);
+  height: clamp(100px, 12vw, 140px);
+  font-size: clamp(40px, 8vw, 60px);
+  border-radius: 16px;
+  border: 3px solid #7c42ff;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   color: white;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  background-color: rgba(7, 7, 38, 0.3);
 }
 
 .cell:hover {
-  background-color: rgba(124, 66, 255, 0.1);
-  transform: scale(1.02);
+  background-color: rgba(124, 66, 255, 0.15);
+  transform: scale(1.05);
+  border-color: #a066ff;
+  box-shadow: 0 0 20px rgba(124, 66, 255, 0.4);
 }
 
 .cell.winner {
-  background-color: rgba(124, 66, 255, 0.3);
-  border: 3px solid #7c42ff;
+  background-color: rgba(124, 66, 255, 0.4);
+  border: 4px solid #7c42ff;
   animation: winnerGlow 1s ease-in-out infinite alternate;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 @keyframes winnerGlow {
@@ -143,9 +185,11 @@ body {
 
 .buttons-container {
   display: flex;
-  gap: 15px;
+  gap: clamp(12px, 2.5vw, 16px);
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
+  margin-top: 0;
+  margin-bottom: clamp(4px, 1vh, 8px);
 }
 
 .reset-btn,
@@ -157,61 +201,63 @@ body {
 
 .reset-btn button {
   width: 100%;
-  background-color: #7c42ff;
+  background: linear-gradient(135deg, #7c42ff, #6a35e0);
   color: white;
-  padding: 12px;
+  padding: clamp(12px, 2.5vh, 16px) clamp(16px, 3vw, 20px);
   border: none;
-  border-radius: 30px;
+  border-radius: 25px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: clamp(14px, 2.8vw, 16px);
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 8px rgba(124, 66, 255, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(124, 66, 255, 0.4), 0 0 20px rgba(124, 66, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: clamp(4px, 1vw, 6px);
+  min-height: clamp(40px, 6vh, 52px);
 }
 
 .reset-btn button:hover {
-  background-color: #6a35e0;
+  background: linear-gradient(135deg, #8b4dff, #7a3ee6);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(124, 66, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(124, 66, 255, 0.6), 0 0 30px rgba(124, 66, 255, 0.3);
 }
 
 .home-btn button {
   width: 100%;
-  background-color: #2a2a4a;
+  background: linear-gradient(135deg, #2a2a4a, #1f1f3a);
   color: white;
-  padding: 12px;
+  padding: clamp(12px, 2.5vh, 16px) clamp(16px, 3vw, 20px);
   border: 2px solid #7c42ff;
-  border-radius: 30px;
+  border-radius: 25px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: clamp(14px, 2.8vw, 16px);
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  gap: clamp(4px, 1vw, 6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(124, 66, 255, 0.1);
+  min-height: clamp(40px, 6vh, 52px);
 }
 
 .home-btn button:hover {
-  background-color: #7c42ff;
+  background: linear-gradient(135deg, #7c42ff, #6a35e0);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(124, 66, 255, 0.4);
+  box-shadow: 0 6px 16px rgba(124, 66, 255, 0.4), 0 0 25px rgba(124, 66, 255, 0.2);
 }
 
 .home-btn button .icon,
 .reset-btn button .icon {
-  font-size: 16px;
+  font-size: clamp(13px, 2.8vw, 15px);
   transition: transform 0.3s;
 }
 
 .home-btn button:hover .icon,
 .reset-btn button:hover .icon {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 @keyframes neonGlow {
@@ -223,63 +269,140 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  .board {
-    grid-template-columns: repeat(3, 90px);
-    grid-template-rows: repeat(3, 90px);
-    gap: 8px;
+/* Ajustes específicos para móviles - Layout vertical mejorado */
+@media (max-width: 768px) {
+  #game-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(16px, 3vh, 24px);
+    padding: clamp(16px, 2.5vh, 24px);
+    max-width: min(95vw, 500px);
+    min-height: 100vh;
   }
 
-  .cell {
-    width: 90px;
-    height: 90px;
-    font-size: 32px;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  .game-left-panel {
+    max-width: none;
+    gap: clamp(16px, 3vh, 24px);
+    width: 100%;
   }
 
-  .cell.winner {
-    transform: scale(1.03);
-    animation: winnerGlow 1s ease-in-out infinite alternate;
+  .game-right-panel {
+    max-width: none;
+    width: 100%;
+  }
+
+  .header-box {
+    padding: clamp(16px, 2.5vh, 20px) 0 clamp(12px, 2vh, 16px) 0;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 6vw, 2.8rem);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  .players-status {
+    padding: clamp(16px, 2.5vh, 20px);
   }
 
   .symbol {
-    font-size: 28px;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    font-size: clamp(32px, 7vw, 40px);
   }
 
   .vs-text {
-    font-size: 14px;
+    font-size: clamp(18px, 4vw, 22px);
   }
 
   .player-name {
-    font-size: 0.75rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin-top: 6px;
+  }
+
+  .turn-message {
+    font-size: clamp(1.1em, 3vw, 1.3em);
+    margin: clamp(8px, 1.5vh, 12px) 0;
+    padding: clamp(12px, 2vh, 16px) clamp(18px, 3.5vw, 24px);
+  }
+
+  .board {
+    grid-template-columns: repeat(3, min(26vw, 110px));
+    grid-template-rows: repeat(3, min(26vw, 110px));
+    gap: clamp(10px, 2vw, 14px);
+    padding: clamp(12px, 2vh, 18px);
+  }
+
+  .cell {
+    width: min(26vw, 110px);
+    height: min(26vw, 110px);
+    font-size: clamp(36px, 8vw, 44px);
   }
 
   .buttons-container {
-    gap: 10px;
+    gap: clamp(14px, 3vw, 18px);
+    max-width: min(90vw, 320px);
+    margin-bottom: clamp(8px, 1.5vh, 12px);
   }
 
   .reset-btn button,
   .home-btn button {
-    font-size: 14px;
-    padding: 10px;
-    gap: 4px;
+    padding: clamp(12px, 2.5vh, 16px) clamp(18px, 3.5vw, 22px);
+    font-size: clamp(14px, 3vw, 16px);
+    min-height: clamp(44px, 7vh, 52px);
   }
 
   .home-btn button .icon,
   .reset-btn button .icon {
-    font-size: 14px;
+    font-size: clamp(16px, 3.5vw, 18px);
   }
 }
 
+/* Ajustes específicos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  #game-wrapper {
+    gap: clamp(12px, 2.5vh, 18px);
+    padding: clamp(12px, 2vh, 18px);
+  }
+
+  .game-left-panel {
+    gap: clamp(12px, 2.5vh, 18px);
+  }
+
+  .board {
+    grid-template-columns: repeat(3, min(28vw, 95px));
+    grid-template-rows: repeat(3, min(28vw, 95px));
+    gap: clamp(8px, 1.8vw, 12px);
+    padding: clamp(10px, 2vh, 15px);
+  }
+
+  .cell {
+    width: min(28vw, 95px);
+    height: min(28vw, 95px);
+    font-size: clamp(32px, 8vw, 38px);
+  }
+
+  .title {
+    font-size: clamp(2rem, 7vw, 2.4rem);
+  }
+
+  .symbol {
+    font-size: clamp(28px, 7vw, 36px);
+  }
+}
 
 .turn-message {
   text-align: center;
-  font-size: 1.2em;
-  margin: 20px 0;
+  font-size: clamp(1.1em, 2.8vw, 1.4em);
+  margin: clamp(8px, 1.5vh, 12px) 0;
   color: white;
+  font-weight: 500;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  padding: clamp(12px, 2vh, 16px) clamp(18px, 3vw, 24px);
+  background: linear-gradient(135deg, rgba(7, 7, 38, 0.6), rgba(124, 66, 255, 0.1));
+  border-radius: 25px;
+  border: 2px solid rgba(124, 66, 255, 0.4);
+  backdrop-filter: blur(10px);
+  width: 100%;
 }

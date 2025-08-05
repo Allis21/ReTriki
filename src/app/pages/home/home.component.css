@@ -5,64 +5,67 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-body {
-  background-color: #0d0d2b;
+:host {
+  display: block;
+  width: 100%;
   height: 100vh;
+  background-color: #0d0d2b;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   color: white;
-  width: 100vw;
 }
 
 /* CONTENEDOR PRINCIPAL */
 .container {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
   position: relative;
-  width: 100vw;
 }
 
 /* HEADER */
 .header-box {
   text-align: center;
-  padding: 40px 0 10px;
-  margin-bottom: 20px;
+  padding: clamp(20px, 4vh, 40px) 0 clamp(10px, 2vh, 20px);
+  flex-shrink: 0;
 }
 
 .title {
-  font-size: 2.8rem;
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
   font-weight: bold;
   color: #ffffff;
   letter-spacing: 1px;
   text-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff, 0 0 30px #7c42ff;
   animation: neonGlow 2s infinite alternate;
+  margin-bottom: clamp(6px, 1vh, 10px);
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: #cccccc;
-  margin-top: 6px;
   text-shadow: 0 0 5px #7c42ff;
 }
 
 .mode-container {
   background: linear-gradient(to bottom, #3f097c, #b246d3, #e9e2f8);
   width: 100%;
-  padding: 10px 0px 50px;
+  padding: clamp(30px, 5vh, 50px) 0 clamp(60px, 8vh, 80px);
   text-align: center;
   position: relative;
   border-bottom: 1px solid #7c42ff;
   box-shadow: 0 0 20px rgba(124, 66, 255, 0.3);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-
-
 .mode-container h2 {
-  font-size: 1.8rem;
-  margin-bottom: 80px;
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  margin-bottom: clamp(40px, 6vh, 60px);
   font-weight: bold;
   text-shadow: 0 0 8px #7c42ff;
   animation: neonPulse 3s infinite;
@@ -70,12 +73,12 @@ body {
 
 /* BOTÓN CIRCULAR CENTRADO */
 .logo-btn {
-  width: 190px;
-  height: 190px;
+  width: clamp(150px, 20vw, 190px);
+  height: clamp(150px, 20vw, 190px);
   border-radius: 50%;
   background: radial-gradient(circle, #d3d3d3, #888);
   color: black;
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -83,7 +86,7 @@ body {
   border: 6px solid #7c42ff;
   box-shadow: 0 0 25px #7c42ff, 0 6px 20px rgba(0, 0, 0, 0.6);
   position: absolute;
-  bottom: -95px;
+  bottom: clamp(-75px, -8vh, -95px);
   left: 50%;
   transform: translateX(-50%);
   line-height: 1.3;
@@ -100,18 +103,19 @@ body {
 /* CONTENEDOR DE OPCIONES JUGADOR / JUGADORES */
 .players-box {
   background-color: rgba(20, 20, 43, 0.8);
-  margin-top: 40px;
-  padding: 40px 20px;
+  margin: clamp(30px, 4vh, 50px) auto;
+  padding: clamp(30px, 4vh, 40px) clamp(20px, 3vw, 30px);
   border-radius: 25px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  gap: 120px;
-  width: 100%;
+  gap: clamp(60px, 10vw, 120px);
+  width: 90%;
   max-width: 600px;
   box-shadow: 0 0 20px rgba(124, 66, 255, 0.2);
   border: 1px solid rgba(124, 66, 255, 0.3);
   backdrop-filter: blur(5px);
+  position: relative;
 }
 
 
@@ -167,24 +171,25 @@ body {
 /* FOOTER */
 .footer {
   color: #888;
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   text-align: center;
-  margin-top: 30px;
+  padding: clamp(10px, 2vh, 20px);
   text-shadow: 0 0 5px rgba(124, 66, 255, 0.5);
+  flex-shrink: 0;
 }
 
 /* BOTÓN INFERIOR FIJO */
 .bottom-btn {
-  position: fixed;
-  bottom: 20px;
+  position: absolute;
+  bottom: clamp(15px, 3vh, 25px);
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(229, 229, 229, 0.9);
   color: #000;
-  padding: 18px 32px;
+  padding: clamp(14px, 2.5vh, 18px) clamp(24px, 4vw, 32px);
   border-radius: 30px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   box-shadow: 0 0 20px rgba(124, 66, 255, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   cursor: pointer;
@@ -192,6 +197,7 @@ body {
   max-width: 380px;
   transition: all 0.3s ease;
   border: 1px solid #7c42ff;
+  z-index: 5;
 }
 
 .bottom-btn:hover {
@@ -207,9 +213,9 @@ body {
 }
 
 /* EFECTOS ADICIONALES */
-body::before {
+.container::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -223,7 +229,7 @@ body::before {
 
 /* Estilo para el texto INICIAR */
 .logo-btn .iniciar-text {
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   line-height: 1;
   color: #7c42ff;
   text-shadow: 0 0 10px rgba(124, 66, 255, 0.8);
@@ -292,49 +298,64 @@ body::before {
 }
 
 /* RESPONSIVO */
-@media (max-width: 480px) {
-  .title {
-    font-size: 2.4rem;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
+@media (max-width: 768px) {
   .mode-container {
-    padding: 60px 0px 120px;
-  }
-
-  .mode-container h2 {
-    font-size: 1.6rem;
-  }
-
-  .logo-btn {
-    width: 170px;
-    height: 170px;
-    font-size: 1.2rem;
+    padding: clamp(25px, 4vh, 35px) 0 clamp(50px, 7vh, 70px);
   }
 
   .players-box {
-    margin-top: 60px;
-    max-width: 600px;
-    gap: 100px;
-    padding: 50px 40px;
-    margin-bottom: 20px;
+    gap: clamp(40px, 8vw, 80px);
+    padding: clamp(25px, 3.5vh, 35px) clamp(15px, 2.5vw, 25px);
+    width: 95%;
   }
 
   .mode img {
-    width: 90px;
-    height: 90px;
+    width: clamp(60px, 12vw, 75px);
+    height: clamp(60px, 12vw, 75px);
   }
 
   .mode span {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.8vw, 1.1rem);
+  }
+
+  .logo-btn {
+    width: clamp(140px, 18vw, 170px);
+    height: clamp(140px, 18vw, 170px);
+    bottom: clamp(-70px, -7vh, -85px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .mode-container {
+    padding: clamp(20px, 3vh, 30px) 0 clamp(45px, 6vh, 60px);
+  }
+
+  .players-box {
+    gap: clamp(30px, 6vw, 50px);
+    padding: clamp(20px, 3vh, 30px) clamp(12px, 2vw, 20px);
+    width: 98%;
+    margin: clamp(25px, 3vh, 40px) auto;
+  }
+
+  .mode img {
+    width: clamp(55px, 11vw, 70px);
+    height: clamp(55px, 11vw, 70px);
+  }
+
+  .logo-btn {
+    width: clamp(130px, 17vw, 160px);
+    height: clamp(130px, 17vw, 160px);
+    bottom: clamp(-65px, -6vh, -80px);
   }
 
   .bottom-btn {
-    font-size: 1.1rem;
-    padding: 16px 28px;
+    bottom: clamp(10px, 2vh, 20px);
+    width: 95%;
+    padding: clamp(12px, 2vh, 16px) clamp(20px, 3vw, 28px);
   }
 }
 

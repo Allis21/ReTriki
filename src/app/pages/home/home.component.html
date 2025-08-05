@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>ReTriki</title>
-  <link rel="stylesheet" href="home.component.css" />
-</head>
-<body>
- <div class="container" [class.loaded]="loaded">
-  <!-- Scan line (se añade dinámicamente) -->
-  
-  <!-- Encabezado superior -->
-  <div class="header-box">
-    <h1 class="title">RETRIKI</h1>
-    <p class="subtitle">Juega Triki</p>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>ReTriki</title>
+    <link rel="stylesheet" href="home.component.css" />
+  </head>
+  <body>
+    <div class="container" [class.loaded]="loaded">
+      <!-- Scan line (se añade dinámicamente) -->
 
-  <!-- Contenedor del modo y logo -->
-  <div class="mode-container">
-    <h2>Selecciona el Modo</h2>
-    <div class="logo-btn" (click)="irAIniciar()">
-        <span *ngIf="!modoSeleccionado">logo/<br>ReTriki</span>
-        <span *ngIf="modoSeleccionado" class="iniciar-text">INICIAR</span>
+      <!-- Encabezado superior -->
+      <div class="header-box">
+        <h1 class="title">RETRIKI</h1>
+        <p class="subtitle">Juega Triki</p>
+      </div>
+
+      <!-- Contenedor del modo y logo -->
+      <div class="mode-container">
+        <h2>Selecciona el Modo</h2>
+        <div class="logo-btn" (click)="irAIniciar()">
+          <span *ngIf="!modoSeleccionado">logo/<br />ReTriki</span>
+          <span *ngIf="modoSeleccionado" class="iniciar-text">INICIAR</span>
+        </div>
+      </div>
+
+      <!-- Contenedor de botones de jugadores -->
+      <div class="players-box">
+        <div
+          class="mode"
+          [class.selected]="modoSeleccionado === 'jugador'"
+          (click)="irAModoJugador()"
+        >
+          <img src="assets/jugador1.png" alt="Jugador" />
+          <span>Jugador</span>
+        </div>
+
+        <div
+          class="mode"
+          [class.selected]="modoSeleccionado === 'jugadores'"
+          (click)="irAModoJugadores()"
+        >
+          <img src="assets/jugador2.png" alt="Jugadores" />
+          <span>Jugadores</span>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>Todos los derechos reservados</p>
+      </div>
+
+      <!-- Botón fijo inferior -->
+      <div class="bottom-btn" (click)="irAPersonalizar()">
+        <span>>>></span> Personaliza tu ReTriki
+      </div>
     </div>
-  </div>
-
-  <!-- Contenedor de botones de jugadores -->
-  <div class="players-box">
-  <div class="mode" 
-       [class.selected]="modoSeleccionado === 'jugador'" 
-       (click)="irAModoJugador()">
-    <img src="assets/jugador1.png" alt="Jugador" />
-    <span>Jugador</span>
-  </div>
-
-  <div class="mode" 
-       [class.selected]="modoSeleccionado === 'jugadores'" 
-       (click)="irAModoJugadores()">
-    <img src="assets/jugador2.png" alt="Jugadores" />
-    <span>Jugadores</span>
-  </div>
-</div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>Todos los derechos reservados</p>
-  </div>
-
-  <!-- Botón fijo inferior -->
-  <div class="bottom-btn" (click)="irAPersonalizar()">
-    <span>>>></span> Personaliza tu ReTriki
-  </div>
-</div>
-
-</body>
+  </body>
 </html>

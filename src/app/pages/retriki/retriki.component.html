@@ -1,54 +1,60 @@
 <div id="game-wrapper">
-  <div class="header-box">
-    <h1 class="title">RETRIKI</h1>
-    <p class="subtitle">Juega Triki</p>
+  <!-- Panel izquierdo: Info del juego -->
+  <div class="game-left-panel">
+    <div class="header-box">
+      <h1 class="title">RETRIKI</h1>
+      <p class="subtitle">Juega Triki</p>
+    </div>
+
+    <div class="players-status">
+      <div class="player">
+        <span class="symbol">✖</span>
+        <p class="player-name">
+          {{ modo === "jugador" ? "Jugador" : "Jugador 1" }}
+        </p>
+      </div>
+      <div class="vs-text">VS</div>
+      <div class="player">
+        <span class="symbol">◯</span>
+        <p class="player-name">
+          {{ modo === "jugador" ? "IA" : "Jugador 2" }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Mensaje del turno -->
+    <p class="turn-message">
+      {{ isIAThinking ? "IA está pensando..." : message }}
+    </p>
+
+    <div class="buttons-container">
+      <div class="home-btn">
+        <button (click)="goToHome()">
+          <span class="icon">←</span>
+          Inicio
+        </button>
+      </div>
+
+      <div class="reset-btn">
+        <button (click)="resetGame()">
+          <span class="icon">↻</span>
+          Reiniciar
+        </button>
+      </div>
+    </div>
   </div>
 
-  <div class="players-status">
-    <div class="player">
-      <span class="symbol">✖</span>
-      <p class="player-name">
-        {{ modo === "jugador" ? "Jugador" : "Jugador 1" }}
-      </p>
-    </div>
-    <div class="vs-text">VS</div>
-    <div class="player">
-      <span class="symbol">◯</span>
-      <p class="player-name">
-        {{ modo === "jugador" ? "IA" : "Jugador 2" }}
-      </p>
-    </div>
-  </div>
-
-  <!-- Mensaje del turno -->
-  <p class="turn-message">
-    {{ isIAThinking ? "IA está pensando..." : message }}
-  </p>
-
-  <div class="board">
-    <div
-      class="cell"
-      [class.winner]="winningCells.includes(i)"
-      *ngFor="let cell of board; let i = index"
-      (click)="handleClick(i)"
-    >
-      {{ cell }}
-    </div>
-  </div>
-
-  <div class="buttons-container">
-    <div class="home-btn">
-      <button (click)="goToHome()">
-        <span class="icon">←</span>
-        Inicio
-      </button>
-    </div>
-
-    <div class="reset-btn">
-      <button (click)="resetGame()">
-        <span class="icon">↻</span>
-        Reiniciar
-      </button>
+  <!-- Panel derecho: Tablero -->
+  <div class="game-right-panel">
+    <div class="board">
+      <div
+        class="cell"
+        [class.winner]="winningCells.includes(i)"
+        *ngFor="let cell of board; let i = index"
+        (click)="handleClick(i)"
+      >
+        {{ cell }}
+      </div>
     </div>
   </div>
 </div>
